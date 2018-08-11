@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+
+  portainer:
+    image: portainer/portainer:1.19.1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/itsgb/data/dcportainer01:/data
+    ports:
+      - 20000:9000
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      resources:
+        limits:
+          cpus: "0.1"
+          memory: 100M
+      placement:
+        constraints: [node.role == manager]
+
+

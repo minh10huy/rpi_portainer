@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+
+  portainer:
+    container_name: sys_portainer01
+    image: portainer/portainer:1.19.1
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/itsgb/data/dcportainer01:/data
+    ports:
+      - 10000:9000
+
